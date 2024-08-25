@@ -1,9 +1,11 @@
 FROM node:16
 
+RUN apt update && apt -y install chromium 
+
 ENV ENKETO_SRC_DIR=/srv/src/enketo_express
 WORKDIR ${ENKETO_SRC_DIR}
 
-RUN npm install -g pm2@$(npm info pm2 version)
+RUN npm install -g pm2@$(npm info pm2 version) 
 
 COPY . ${ENKETO_SRC_DIR}
 
